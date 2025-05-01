@@ -1,0 +1,23 @@
+# Base Image
+FROM nginx:1.19-alpine 
+
+# it's default nginx index page, we can use custom as well
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy custom nginx configuration if needed (optional)
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy static site or app files (optional)
+COPY ./html /usr/share/nginx/html
+
+# without root user
+RUN addgroup -S nginxgroup && adduser -S nginxuser -G nginxgroup \
+    && chown -R nginxuser:nginxgroup /var/cache/nginx /var/run /var/log/nginx
+
+USER nginxuser
+
+# Expose default nginx port
+EXPOSE 80
+
+# Use default CMD from base image it will run the nginx command in the foreground, using this as its default process.
+CMD ["nginx", "-g", "daemon off;"]
