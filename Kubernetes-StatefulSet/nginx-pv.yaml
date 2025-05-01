@@ -1,0 +1,16 @@
+apiVersion: v1  
+kind: PersistentVolume  
+metadata:
+  name: nginx-pv  # It's used to identify  PersistentVolume.
+spec:
+  capacity:
+    storage: 1Gi  #  1 Gigabyte.
+  volumeMode: Filesystem  
+  accessModes:
+    - ReadWriteOnce    # -  as read-write by a single node.                   
+  persistentVolumeReclaimPolicy: Retain  
+  storageClassName: manual  # s created manually.
+  hostPath:
+    path: /mnt/data/nginx  
+    type: DirectoryOrCreate  #  DirectoryOrCreate means that if the directory `/mnt/data/nginx` does not exist, it will be created. 
+                              
