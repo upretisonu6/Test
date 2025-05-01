@@ -1,0 +1,11 @@
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+user1:x:1000:1000:User One:/home/user/sonuupreti:/bin/bash
+ftp:x:50:50:FTP User:/var/ftp:/sbin/nologin
+user2:x:1001:1001:User Two:/home/user/sonuupreti2:/bin/bash
+nobody:x:99:99:Nobody:/home:/bin/false
+
+
+
+
